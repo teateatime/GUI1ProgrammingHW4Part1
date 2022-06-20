@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<!--
+File: index.html
+GUI Assignment 4: Using the jQuery Plugin/UI with Your Dynamic Table
+Tim Truong, UMass Lowell Computer Science, tim_truong1@student.uml.edu
+Copyright (c) 2022 by Tim Truong. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Updated on 6/22/22 at 10:00pm.
+Instructor: Professor Wenjin Zhou
+Sources of Help: W3Schools and Stackoverflow
+Brief Overview: The site is a continuation from hw 3's dynamic multiplication table where we add and implement
+new features to our program which are sliders and user validation
+that comes from the jQuery ui and validation library respectively.
+Additionally, in this assignment we will also be allowing tabs where users can save their multiplication tables
+as references.
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dynamic Multiplication Table by Tim Truong</title>
+        <!---CSS link-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body class="main">
+        <div class="wrapper">
+            <h2>Dynamic Multiplication Table</h2>
+            <h3>Created by Tim Truong</h3>
+
+            <!--Container for form box-->
+            <div class="input-container" id="box">
+                <form id="myForm">
+                    <!--Implemented input boxes for number so that users can only input
+                    number related inputs instead random text-->
+                    <!--Added placeholder in order to show what kind of input the user should be
+                    expecting to put in-->
+                    <p>Please Input Number Ranges</p>
+                    <label for="min-col-val"  id="min-clabel">Minimum Column Value:</label>
+                    <input name="min_cInput" type="number" id="min_cVal" placeholder="1" required><br>
+                    <label for="max-col-val"  id="max-clabel">Maximum Column Value:</label>
+                    <input name="max_cInput" type="number" id="max_cVal" placeholder="1" required><br>
+                    <label for="min-row-val" id="min-rlabel">Minimum Row Value:</label>
+                    <input name="min_rInput" type="number" id="min_rVal" placeholder="1" required><br>
+                    <label for="max-row-val" id="max-rlabel">Maximum Row Value:</label>
+                    <input name="max_rInput" type="number" id="max_rVal" placeholder="1" required><br>
+                    <!--Reviewed forms in w3schools site link
+                        to help me out in this assignment
+                        -> https://www.w3schools.com/html/html_forms.asp-->
+                    <input type="submit" id="submit-btn" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <footer>Copyright &copy Tim Truong</footer>
+
+        <!--Created a div with class so that when the table is scrolled, the top row and first
+        column would still be visible especially when we are dealing with a large range-->
+        <div class="table-wrapper" id="tab">
+            <table id="Multiplication-Table"></table>
+        </div>
+
+        <!--Javascript links-->
+        <!--jQuery Stuff -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!--Added jQuery Validation Plugin to enable checks to see if input is valid for this program-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>

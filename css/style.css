@@ -1,0 +1,162 @@
+/*
+File: style.css
+GUI Assignment 4: Using the jQuery Plugin/UI with Your Dynamic Table
+Tim Truong, UMass Lowell Computer Science, tim_truong1@student.uml.edu
+Copyright (c) 2022 by Tim Truong. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Updated on 6/22/22 at 10:00pm.
+Instructor: Professor Wenjin Zhou
+Sources of Help: W3Schools and Stackoverflow
+Brief Overview: The site is a continuation from hw 3's dynamic multiplication table where we add and implement
+new features to our program which are sliders and user validation
+that comes from the jQuery ui and validation library respectively.
+Additionally, in this assignment we will also be allowing tabs where users can save their multiplication tables
+as references.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: mintcream;
+}
+
+/* Added text-shadow becaused it looked nice */
+/* Dark blue and light blue text shadow */
+h2, h3 {
+    text-shadow: 0 0 5px #7ac7f7, 0 0 7px rgb(97, 63, 245);
+}
+
+.input-container {
+    background-color:rgb(199, 247, 247);
+    border: 1px solid grey;
+    width: 300px;
+    height: 180px;
+    padding-top: 10px;
+}
+
+.input-container-error {
+    background-color:rgb(199, 247, 247);
+    border: 1px solid grey;
+    width: 300px;
+    height: 380px;
+    padding-top: 10px;
+}
+
+.input-container form {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin: 0 10px;
+}
+
+p {
+    margin: 0;
+    font-weight: 800;
+    border-bottom: 1px solid black;
+}
+
+/* Added padding to make format look nice and organized */
+.input-container form label {
+    display: inline-block;
+    padding: 5px 0px;
+    width: 180px
+}
+
+/* Added position relative to make these labels uniform with the other labels */
+#min-rlabel, #max-rlabel {
+    position: relative;
+    right: -0.8em;
+}
+
+#min_cVal, #max_cVal, #min_rVal, #max_rVal {
+    width: 60px;
+}
+
+#submit-btn {
+    background-color: #42b3fa;
+    border: 1px solid lightskyblue;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    color: white;
+}
+
+/* Added a hover affect to make button look nice when hovering over */
+#submit-btn:hover {
+    background: linear-gradient(to bottom right, #6899FF, #f794e0);
+}
+
+/* Custom error message for jQuery Validation */
+.msg-error { /* Pretty much sets the text, and input box borders to be red in color */
+    border: 2px solid red;
+    display: inline-block;
+    margin: 0 auto;
+    color: #f31a24;
+}
+
+.table-wrapper {
+    display: none;
+    max-width: 400px;
+    max-height: 400px;
+    margin-left: 50%;
+    margin-top: -200px;
+    overflow: scroll;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+/*  Could not figure out how to make first row and column fixed inside scrollable container */
+/*  Not until i found this helpful stackoverflow link: Credit ->
+    https://stackoverflow.com/questions/15811653/table-with-fixed-header-and-fixed-column-on-pure-css */
+/*  Helped me out alot greatly on managing this part of the assignment and part of the code from the source
+    is transferred over to this css rule and another one down below with a few changes that I made to make
+    the code cleaner and less redudant while showing my understanding. Also in .table wrapper as well
+    (almost forgot about that section) */
+table tr:nth-child(1) {
+    position: sticky; /* Makes top header of table stay in place when scrolling vertically */
+    top: 0;
+}
+
+table tr th:first-child {
+    position: sticky; /* Makes first column of table stay in place when scrolling horizontailly */
+    left: 0;
+}
+
+/*  Makes the first table row and first table header blank just like the 
+    example in the pdf sheet */
+table > tr:first-child > th:first-child {
+    background-color: mintcream;
+    border: none;
+}
+
+th, td {
+    border: 1px solid black;
+    width: 40px;
+    text-align: center;
+}
+
+/* Made th text bolder and standout from the td */
+/* so that way someone can distinguish between the top row and first column */
+th {
+    background-color: rgb(53, 103, 250);
+    color: #fff;
+    font-weight: 600;
+}
+
+td {
+    background-color: rgb(176, 224, 243);
+    color: #222;
+}
+
+footer {
+    position: absolute;
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 0 5px #7ac7f7, 0 0 7px rgb(97, 63, 245);
+    font-weight: 600;
+}
